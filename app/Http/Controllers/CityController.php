@@ -37,4 +37,10 @@ class CityController extends Controller
 
         return 204;
     }
+
+    public function search(Request $request)
+    {
+        $id = $request->id;
+        return City::find($id);
+    }
 }

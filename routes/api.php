@@ -33,5 +33,5 @@ Route::put('city/{id}', 'CityController@update');
 Route::delete('city/{id}', 'CityController@delete');
 
 // Soal Test
-Route::get('search/province/{id}', 'ProvinceController@show');
-Route::get('search/city/{id}', 'CityController@show');
+Route::get('search/provinces', 'ProvinceController@search');
+Route::get('search/cities', 'CityController@search');

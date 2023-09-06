@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ProvinceController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         return Province::all();
     }
@@ -36,6 +36,12 @@ class ProvinceController extends Controller
         $province->delete();
 
         return 204;
+    }
+
+    public function search(Request $request)
+    {
+        $id = $request->id;
+        return Province::find($id);
     }
 }
 

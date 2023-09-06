@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Soal Test
+Route::get('search/provinces', 'ProvinceController@search');
+Route::get('search/cities', 'CityController@search');

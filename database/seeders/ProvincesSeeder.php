@@ -18,8 +18,8 @@ class ProvincesSeeder extends Seeder
         $provinciesList = HelperController::_request('/province');
         foreach ($provinciesList as $provinceRow) {
             Province::create([
-                'province_id' => $provinceRow['province_id'],
-                'name'        => $provinceRow['province'],
+                'province_id' => $provinceRow->province_id,
+                'name'        => $provinceRow->province,
             ]);
         }
     }

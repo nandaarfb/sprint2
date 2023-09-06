@@ -15,12 +15,12 @@ class CitiesSeeder extends Seeder
      */
     public function run()
     {
-        $citiesList = HelperController::_request('/province');
+        $citiesList = HelperController::_request('/city');
         foreach ($citiesList as $cityRow) {
             City::create([
-                'province_id' => $cityRow['province_id'],
-                'city_id'     => $cityRow['city_id'],
-                'name'        => $cityRow['province'],
+                'province_id' => $cityRow->province_id,
+                'city_id'     => $cityRow->city_id,
+                'name'        => $cityRow->province,
             ]);
         }
     }
