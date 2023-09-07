@@ -7,35 +7,16 @@ use Illuminate\Http\Request;
 
 class ProvinceController extends Controller
 {
-    public function index()
+    public function search(Request $request)
     {
-        return Province::all();
-    }
- 
-    public function show($id)
-    {
-        return Province::find($id);
-    }
-
-    public function store(Request $request)
-    {
-        return Province::create($request->all());
-    }
-
-    public function update(Request $request, $id)
-    {
-        $province = Province::findOrFail($id);
-        $province->update($request->all());
-
-        return $province;
-    }
-
-    public function delete(Request $request, $id)
-    {
-        $province = Province::findOrFail($id);
-        $province->delete();
-
-        return 204;
+        if (env('DATASOURCE') == "API") {
+            $path = "/province";
+            $request = json_encode($request);
+            return HelperController::_request($path, $request);
+        }elseif (env('DATASOURCE') == "DATABASE") {
+            $id = $request->id;
+            return Province::find($id);
+        }
     }
 }
 

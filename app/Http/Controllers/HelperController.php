@@ -18,10 +18,25 @@ class HelperController extends Controller
 
 	public function _request($path, $options = null)
 	{
-		$url = $this->endpoint . "/" . $path;
+		// $url = env('RAJAONGKIR_ENDPOINT') . "/" . $path;
+		$url = "";
+		if ($request === null) {
+			$url = env('RAJAONGKIR_ENDPOINT') . "/" . $path;
+		} else {
+			$queryParams = "";
+			foreach (json_decode($request) as $key => $value) {
+				$obj[$key] = $value;
+				$queryParams = $queryParams.$key."=".$value."&";
+			}
+			$url = env('RAJAONGKIR_ENDPOINT') . "/" . $path . "?" . rtrim($queryParams, "&");
+		}
+		
+		// Http::withHeaders([
+		// 	'key' => env('RAJAONGKIR_APIKEY')
+		// ])->get($url);
 
 		$curl = curl_init();
-		$config = array(
+		curl_setopt_array($curl, array(
 			CURLOPT_URL => $url,
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_ENCODING => "",
@@ -30,13 +45,10 @@ class HelperController extends Controller
 			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 			CURLOPT_CUSTOMREQUEST => "GET",
 			CURLOPT_HTTPHEADER => array(
-		    	"key: " . $this->key
+				"key: " . env('RAJAONGKIR_APIKEY')
 			),
-		);
-		$config = array_merge($config, $options);
-		curl_setopt_array($curl, $config);
-
-		$response = curl_exec($curl);
+		));
+		$response = json_decode(curl_exec($curl));
 		$err = curl_error($curl);
 		curl_close($curl);
 
