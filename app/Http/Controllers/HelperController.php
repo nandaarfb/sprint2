@@ -13,7 +13,21 @@ class HelperController extends Controller
 
 	public static function _request($path, $request = null)
 	{
-		$url = env('RAJAONGKIR_ENDPOINT') . "/" . $path;
+		$url = "";
+		if ($request === null) {
+			$url = env('RAJAONGKIR_ENDPOINT') . "/" . $path;
+		} else {
+			$queryParams = "";
+			foreach (json_decode($request) as $key => $value) {
+				$obj[$key] = $value;
+				$queryParams = $queryParams.$key."=".$value."&";
+			}
+			$url = env('RAJAONGKIR_ENDPOINT') . "/" . $path . "?" . rtrim($queryParams, "&");
+		}
+		
+		// Http::withHeaders([
+		// 	'key' => env('RAJAONGKIR_APIKEY')
+		// ])->get($url);
 
 		$curl = curl_init();
 		curl_setopt_array($curl, array(

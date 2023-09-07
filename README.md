@@ -2,43 +2,54 @@
  
  ## Nanda Arief Bachtiar
 
-**Sprint 1**
-1. Integrasi dengan API province & city Rajaongkir (paket starter)
-https://rajaongkir.com/dokumentasi/starter
-2. Membuat artisan command​ yg melakukan fetching API data provinsi & kota dan data
-disimpan ke dalam database.
-3. Membuat REST API untuk pencarian provinsi & kota dengan endpoint berikut:
-a. [GET] /search/provinces?id={province_id}
+**Sprint 2**
 
-b. [GET] /search/cities?id={city_id}
-Data API pencarian ini mengambil dari database.
+Meningkatnya kebutuhan Web service, tim engineer memutuskan untuk membuat swapable implementation​ untuk endpoint pencarian provinsi dan kota.
+1. Membuat sumber data pencarian province & cities bisa melalui database​ atau direct API​ raja ongkir (swapable implementation). Proses swap implementasi dapat dilakukan melalui konfigurasi tanpa merubah source code yang sudah dibuat.
+2. Menyediakan API login agar endpoint pencarian hanya bisa diakses oleh authorized user saja.
+3. Membuat unit test / API test agar web service tetap reliable & maintainable
 
 **Run Project**
-1. Clone Project `git clone https://github.com/nandaarfb/sprint1.git`
+1. Clone Project `git clone https://github.com/nandaarfb/sprint2.git`
 2. Run Command `composer install`
 3. copy `.env.example` and rename it to `.env`
 4. edit env value of`DB_DATABASE=dot_test`
 5. input env `RAJAONGKIR_ENDPOINT=https://api.rajaongkir.com/starter`
 6. input env `RAJAONGKIR_APIKEY=0df6d5bf733214af6c6644eb8717c92c`
-7. Run Command `php artisan migrate`
-8. Run Command `composer dump-autoload`
-9. Run Command `php artisan db:seed`
-10. Run Command `php artisan serve` to Run A Project
+7. input env `DATASOURCE=API` or `DATASOURCE=DATABASE`, it a config to swap data source from database or direct API rajaongkir (*swapable implementation*)
+8. Run Command `php artisan migrate`
+9. Run Command `composer dump-autoload`
+10. Run Command `php artisan db:seed`
+11. Run Command `php artisan serve` to Run A Project
 
-**Tes API**
+**Register User Authentication**
 1. Open Postman
 2. Click New Collection
 3. Click New Request
+4. **EDIT**Input url `https://localhost:8000/REGISTER` And method `POST`
+5. And Run It
+
+**Login User Authentication**
+1. Open Postman
+3. Click New Request
+4. **EDIT**Input url `https://localhost:8000/LOGIN` And method `POST`
+5. And Run It
+
+**Tes API**
+1. Open Postman
+3. Click New Request
+4. **Register User Authentication**
+4. **Login User Authentication** to Access API below
 4. Input url `https://localhost:8000/search/provincies?id=1` And method `GET`
 5. And Run It
 6. Input url `https://localhost:8000/search/cities?id=1` And method `GET`
 7. And Run It
 
+** Run Unit Test**
+1. Bla
+2. Bla
+
 ## Thank You
-
-
-
-
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
