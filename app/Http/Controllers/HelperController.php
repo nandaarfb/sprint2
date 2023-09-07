@@ -14,10 +14,6 @@ class HelperController extends Controller
 	public static function _request($path, $request = null)
 	{
 		$url = env('RAJAONGKIR_ENDPOINT') . "/" . $path;
-	
-		// Http::withHeaders([
-		// 	'key' => env('RAJAONGKIR_APIKEY')
-		// ])->get($url);
 
 		$curl = curl_init();
 		curl_setopt_array($curl, array(
@@ -51,6 +47,7 @@ class HelperController extends Controller
 			// $this->error = $rajaongkir->status->description;
 		}
 		
+		dd($rajaongkir->results);
 		if ( $rajaongkir->status->code == 200 ) {
 			return $rajaongkir->results;
 		}
