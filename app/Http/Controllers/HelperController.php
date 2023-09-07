@@ -11,9 +11,13 @@ class HelperController extends Controller
 	protected $key;
 	private $error;
 
-	public static function _request($path, $options = null)
+	public static function _request($path, $request = null)
 	{
 		$url = env('RAJAONGKIR_ENDPOINT') . "/" . $path;
+	
+		// Http::withHeaders([
+		// 	'key' => env('RAJAONGKIR_APIKEY')
+		// ])->get($url);
 
 		$curl = curl_init();
 		curl_setopt_array($curl, array(
