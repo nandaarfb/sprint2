@@ -10,12 +10,14 @@ class CityController extends Controller
     public function search(Request $request)
     {
         if (env('DATASOURCE') == "API") {
-            $path = "/city";
-            $request = json_encode($request);
-            return HelperController::_request($path, $request);
+            $id = $request->id;
+            $path = "/city?id=".$id;
+            $response = HelperController::_request($path, $request);
+            return $response;
         }elseif (env('DATASOURCE') == "DATABASE") {
             $id = $request->id;
-            return City::find($id);
+            $response = City::find($id);
+            return $response;
         }
     }
 }

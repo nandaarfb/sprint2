@@ -10,12 +10,14 @@ class ProvinceController extends Controller
     public function search(Request $request)
     {
         if (env('DATASOURCE') == "API") {
-            $path = "/province";
-            $request = json_encode($request);
-            return HelperController::_request($path, $request);
+            $id = $request->id;
+            $path = "/province?id=".$id;
+            $response = HelperController::_request($path, $request);
+            return $response;
         }elseif (env('DATASOURCE') == "DATABASE") {
             $id = $request->id;
-            return Province::find($id);
+            $response = Province::find($id);
+            return $response;
         }
     }
 }

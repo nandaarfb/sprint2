@@ -11,23 +11,9 @@ class HelperController extends Controller
 	protected $key;
 	private $error;
 
-	public static function _request($path, $request = null)
+	public static function _request($path)
 	{
-		$url = "";
-		if ($request === null) {
-			$url = env('RAJAONGKIR_ENDPOINT') . "/" . $path;
-		} else {
-			$queryParams = "";
-			foreach (json_decode($request) as $key => $value) {
-				$obj[$key] = $value;
-				$queryParams = $queryParams.$key."=".$value."&";
-			}
-			$url = env('RAJAONGKIR_ENDPOINT') . "/" . $path . "?" . rtrim($queryParams, "&");
-		}
-		
-		// Http::withHeaders([
-		// 	'key' => env('RAJAONGKIR_APIKEY')
-		// ])->get($url);
+		$url = env('RAJAONGKIR_ENDPOINT') . "/" . $path;
 
 		$curl = curl_init();
 		curl_setopt_array($curl, array(
@@ -61,7 +47,6 @@ class HelperController extends Controller
 			// $this->error = $rajaongkir->status->description;
 		}
 		
-		dd($rajaongkir->results);
 		if ( $rajaongkir->status->code == 200 ) {
 			return $rajaongkir->results;
 		}

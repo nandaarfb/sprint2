@@ -14,10 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/register', 'API\AuthController@register');
+Route::post('/login', 'API\AuthController@login');
 
-// Soal Test
-Route::get('search/provinces', 'ProvinceController@search');
-Route::get('search/cities', 'CityController@search');
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    // Soal Test
+    Route::get('search/provinces', 'ProvinceController@search');
+    Route::get('search/cities', 'CityController@search');
+
+    Route::post('/logout', 'API\AuthController@logout');
+});

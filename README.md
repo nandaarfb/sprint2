@@ -26,13 +26,17 @@ Meningkatnya kebutuhan Web service, tim engineer memutuskan untuk membuat swapab
 1. Open Postman
 2. Click New Collection
 3. Click New Request
-4. **EDIT**Input url `https://localhost:8000/REGISTER` And method `POST`
+3. Choose Method to `POST`
+4. Input url `http://localhost:8000/api/register` And method `POST`
+5. In Tab Body Insert Key `name`, `email`, `password` Along Value
 5. And Run It
 
 **Login User Authentication**
 1. Open Postman
 3. Click New Request
-4. **EDIT**Input url `https://localhost:8000/LOGIN` And method `POST`
+3. Choose Method to `POST`
+4. Input url `http://localhost:8000/api/login` And method `POST`
+5. In Tab Body Insert Key `email`, `password` Along Value
 5. And Run It
 
 **Tes API**
@@ -40,10 +44,21 @@ Meningkatnya kebutuhan Web service, tim engineer memutuskan untuk membuat swapab
 3. Click New Request
 4. **Register User Authentication**
 4. **Login User Authentication** to Access API below
-4. Input url `https://localhost:8000/search/provincies?id=1` And method `GET`
+4. Input url `https://localhost:8000/api/search/provinces?id=1` And choose method `GET`
+5. Input Bearer Token in tab `Authorization` and choose Type `Bearer Token`
 5. And Run It
-6. Input url `https://localhost:8000/search/cities?id=1` And method `GET`
+6. Input url `https://localhost:8000/api/search/cities?id=1` And choose method `GET`
+5. Input Bearer Token in tab `Authorization` and choose Type `Bearer Token`
 7. And Run It
+8. **Logout User Authentication**
+
+**Logout User Authentication**
+1. Open Postman
+3. Click New Request
+3. Choose Method to `POST`
+4. Input url `http://localhost:8000/api/logout` And method `POST`
+5. Input Bearer Token in tab `Authorization` and choose Type `Bearer Token`
+5. And Run It
 
 ** Run Unit Test**
 1. Bla
