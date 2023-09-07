@@ -1,3 +1,43 @@
+> Online Test PT DOT Indonesia
+ 
+ ## Nanda Arief Bachtiar
+
+**Sprint 1**
+1. Integrasi dengan API province & city Rajaongkir (paket starter)
+https://rajaongkir.com/dokumentasi/starter
+2. Membuat artisan command​ yg melakukan fetching API data provinsi & kota dan data
+disimpan ke dalam database.
+3. Membuat REST API untuk pencarian provinsi & kota dengan endpoint berikut:
+a. [GET] /search/provinces?id={province_id}
+
+b. [GET] /search/cities?id={city_id}
+Data API pencarian ini mengambil dari database.
+
+**Run Project**
+1. Clone Project `git clone https://github.com/nandaarfb/sprint1.git`
+2. Run Command `composer install`
+3. copy `.env.example` and rename it to `.env`
+4. edit env value of`DB_DATABASE=dot_test`
+5. input env `RAJAONGKIR_ENDPOINT=https://api.rajaongkir.com/starter`
+6. input env `RAJAONGKIR_APIKEY=0df6d5bf733214af6c6644eb8717c92c`
+7. Run Command `php artisan migrate`
+8. Run Command `composer dump-autoload`
+9. Run Command `php artisan db:seed`
+10. Run Command `php artisan serve` to Run A Project
+
+**Tes API**
+1. Open Postman
+2. Click New Collection
+3. Click New Request
+4. Input url `https://localhost:8000/search/provincies?id=1` And method `GET`
+5. And Run It
+
+## Thank You
+
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
