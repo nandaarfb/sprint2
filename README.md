@@ -61,8 +61,7 @@ Meningkatnya kebutuhan Web service, tim engineer memutuskan untuk membuat swapab
 5. And Run It
 
 ** Run Unit Test**
-1. Bla
-2. Bla
+1. Run Command `php artisan test`
 
 ## Thank You
 
