@@ -31,6 +31,8 @@ Data API pencarian ini mengambil dari database.
 3. Click New Request
 4. Input url `https://localhost:8000/search/provincies?id=1` And method `GET`
 5. And Run It
+6. Input url `https://localhost:8000/search/cities?id=1` And method `GET`
+7. And Run It
 
 ## Thank You
 
